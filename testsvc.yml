@@ -1,0 +1,7 @@
+---
+hosts: red-hat
+- name: test
+  tasks:
+    commnand: ls
+    register: output
+- debug: var=output

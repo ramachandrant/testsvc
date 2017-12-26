@@ -10,7 +10,6 @@ echo "Testing shell scripts"
 info() {
    echo "System Information"
    echo " IP (if): $(hostname -i)"
-   echo "   uname: $(/usr/bin/uname -a)"
    echo "  uptime: $(/usr/bin/uptime)"
    echo " oslevel: $(cat /etc/redhat-release*))" 
 }

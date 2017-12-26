@@ -1,7 +1,10 @@
----
-hosts: red-hat
-- name: test
-  tasks:
-    commnand: ls
-    register: output
-- debug: var=output
+--- #Master Playbook for AppServices test12
+- hosts: localhost
+  user: test
+  pre_tasks:
+    - name: Checks Ansible System
+      setup: filter=ansible_system
+      register: system_type
+    - debug: var=system_type
+  roles:
+    - { role: svc_deploy_linux, when: "ansible_system == 'Linux'" }

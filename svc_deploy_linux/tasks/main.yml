@@ -5,7 +5,7 @@
      owner: test
      group: test
      mode: 0755
-   with_items:
+  with_items:
        - testsvc
   register: copyScriptsLog
   tags: copyScripts

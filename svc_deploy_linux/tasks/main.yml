@@ -1,4 +1,40 @@
-- name: System host name
-  setup: filter=ansible_hostname
-  register: system_hostname
-- debug: var=system_hostname
+- name: copy scripts to server
+  copy:
+     src: "{{ item }}"
+     dest: "/home/test/scripts"
+     owner: test
+     group: test
+     mode: 0755
+   with_items:
+       - testsvc
+  register: copyScriptsLog
+  tags: copyScripts
+- debug: var=copyScriptsLog
+
+- name: Display System Information
+  shell: /home/test/scripts/appsvc info
+  become: yes
+  register: systemInfoLog
+  tags: systemInfo
+- debug: var=systemInfoLog
+
+- name: Display HTTPD service status
+  shell: /home/test/scripts/appsvc status
+  become: yes
+  register: httpdStatusLog
+  tags: httpdStatus
+- debug: var=httpdStatusLog
+
+- name: Display HTTPD service stop
+  shell: /home/test/scripts/appsvc stop
+  become: yes
+  register: httpdStopLog
+  tags: httpdStop
+- debug: var=httpdStopLog
+  
+- name: Display HTTPD service start
+  shell: /home/test/scripts/appsvc start
+  become: yes
+  register: httpdStartLog
+  tags: httpdStart
+- debug: var=httpdStartLog

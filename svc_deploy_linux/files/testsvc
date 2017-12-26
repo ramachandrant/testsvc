@@ -1,0 +1,60 @@
+#!/usr/bin/bash
+#########################
+#Test shell script
+#
+#
+#
+#########################
+echo "Testing shell scripts"
+
+info() {
+   echo "System Information"
+   echo " IP (if): $(hostname -i)"
+   echo "   uname: $(/usr/bin/uname -a)"
+   echo "  uptime: $(/usr/bin/uptime)"
+   echo " oslevel: $(cat /etc/redhat-release*))" 
+}
+
+start() {
+
+  cmd_out=$(sudo systemctl start httpd.service)
+  echo "httpd start command output \n $cmd_out"
+
+}
+
+stop() {
+
+  cmd_out=$(sudo systemctl stop httpd.service)
+  echo "httpd stop command output \n $cmd_out"
+
+}
+
+status() {
+  cmd_out=$(sudo systemctl status httpd.service)
+  echo "httpd status command output \n $cmd_out"
+}
+
+
+typeset -l ARGS="$*"
+set $ARGS >/dev/null 2>&1
+ARG1="$1"
+
+case "$ARG1" in
+    start)
+        info
+        start
+    ;;
+
+    stop)
+        info 
+        stop
+    ;;
+
+    status)
+          info
+	  status
+    ;;
+    info)
+        info
+    ;;
+esac

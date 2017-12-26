@@ -1,0 +1,4 @@
+- name: System host name
+  setup: filter=ansible_hostname
+  register: system_hostname
+- debug: var=system_hostname

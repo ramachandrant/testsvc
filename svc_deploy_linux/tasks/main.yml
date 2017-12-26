@@ -1,7 +1,7 @@
 - name: copy scripts to server
   copy:
      src: "{{ item }}"
-     dest: "/home/test/scripts"
+     dest: "/home/test/scripts/"
      owner: test
      group: test
      mode: 0755

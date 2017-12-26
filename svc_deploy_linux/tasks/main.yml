@@ -12,28 +12,28 @@
 - debug: var=copyScriptsLog
 
 - name: Display System Information
-  shell: /home/test/scripts/appsvc info
+  shell: /home/test/scripts/testsvc info
   become: yes
   register: systemInfoLog
   tags: systemInfo
 - debug: var=systemInfoLog
 
 - name: Display HTTPD service status
-  shell: /home/test/scripts/appsvc status
+  shell: /home/test/scripts/testsvc status
   become: yes
   register: httpdStatusLog
   tags: httpdStatus
 - debug: var=httpdStatusLog
 
 - name: Display HTTPD service stop
-  shell: /home/test/scripts/appsvc stop
+  shell: /home/test/scripts/testsvc stop
   become: yes
   register: httpdStopLog
   tags: httpdStop
 - debug: var=httpdStopLog
   
 - name: Display HTTPD service start
-  shell: /home/test/scripts/appsvc start
+  shell: /home/test/scripts/testsvc start
   become: yes
   register: httpdStartLog
   tags: httpdStart

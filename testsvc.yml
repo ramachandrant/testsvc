@@ -1,5 +1,5 @@
 --- #Master Playbook for AppServices test12
-- hosts: localhost
+- hosts: red-hat
   user: test
   pre_tasks:
     - name: Checks Ansible System
